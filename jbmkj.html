@@ -70,9 +70,9 @@ body {
   </div>
   <div class="mofunca vl">maltcefuha</div>
   <div class="v vl torveki">
-    <p><span class="tertaha">lo se djica</span> zohu: lakne .ije jibni .i .ehinai lazni</p>
-    <p><span class="tertaha">lo do pinji</span> zohu: carmi .inaje cando .i .ehu na pacna</p>
-    <p><span class="tertaha">lo broda brode</span> zohu: brodi .iju brodo .i pei brodu</p>
+    <p><span class="tertaha">lo se djica</span> zohu: <span class="brivla">lakne</span> .i<span class="mahoija">je</span> <span class="brivla">jibni</span> <span class="zahumai">.i .ehinai lazni</span></p>
+    <p><span class="tertaha">lo do pinji</span> zohu: <span class="brivla">carmi</span> .i<span class="mahoija">naje</span> <span class="brivla">cando</span> <span class="zahumai">.i .ehu na pacna</span></p>
+    <p><span class="tertaha">lo broda brode</span> zohu: <span class="brivla">brodi</span> .i<span class="mahoija">ju</span> <span class="brivla">brodo</span> <span class="zahumai">.i pei brodu</span></p>
   </div>
 </div>
 
@@ -90,12 +90,30 @@ body {
     lo jdini,500
     lo do pinji,5
   </textarea>
+  <textarea id="brivla">
+    lakne,100
+    jibni,100
+    carmi,100
+    cando,100
+    brodi,100
+    brodo,100
+  </textarea>
+  <textarea id="mahoija">
+    je,100
+    naje,100
+    ju,100
+  </textarea>
+  <textarea id="zahumai">
+    .i .ehinai lazni,100
+    .i .ehu na pacna,100
+    .i pei brodu,100
+  </textarea>
 </div>
 
 <script>
 window.addEventListener("load",function(){
   document.getElementById("cuxna").addEventListener("click",function(){
-    cuxyciha(["mofunca","tertaha"]);
+    cuxyciha(["mofunca","tertaha","brivla","mahoija","zahumai"]);
   },false);
 },false);
 function cuxyciha(id_zei_porsi){
