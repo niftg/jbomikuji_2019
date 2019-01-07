@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<title>jbomikuji</title>
+<style>
+@font-face {
+  font-family: vertical_latin;
+  src        : url("Vertical_Latin_Calligraphic.otf");
+}
+.vl {
+  letter-spacing: 0;
+  font-family   : vertical_latin;
+}
+.v {
+  text-orientation: sideways;
+  writing-mode    : tb-rl;
+  writing-mode    : vertical-rl;
+}
+.sinxa {
+  height:160px;
+  border-style: dashed;
+  border-width: 0px 15px 0px;
+}
+.sinxa_vasru{
+    margin: 10px auto;
+    padding-bottom: 0px;
+    text-align: center;
+    border-bottom-style: double;
+    border-bottom-width: 5px;
+    font-size: 0.5em;
+}
+.sinxa_vasru p.v {
+  display: inline-block;
+  margin: auto 0px;
+  text-align: center;
+  position:relative;
+}
+#cmene{top:-48px;}
+#detri{top:-42px;}
+body {
+  font-size:xx-large;
+}
+.vl p {margin:0px;}
+.torveki {
+  margin:0px auto;
+  display: inline-block;
+  text-align: justify;
+  padding-top: 10px;
+  height: 10em;
+}
+.torveki p {
+  margin: 0px 10px 0px;
+}
+.mutpelji {
+  width:300px;
+  border: black solid 5px;
+  text-align: center;
+}
+.mofunca{
+  font-size: 1.5em;
+  border-bottom: black solid 2px;
+}
+</style>
+
+<div class="mutpelji">
+  <div class="sinxa_vasru vl">
+    <p class="v" id="cmene">la jbomikuji</p>
+    <img class="sinxa" src="jbmkjs.svg">
+    <p class="v" id="detri">dehi li renopaso</p>
+  </div>
+  <div class="mofunca vl">maltcefuha</div>
+  <div class="v vl torveki">
+    <p><span class="tertaha">lo se djica</span> zohu: lakne .ije jibni .i .ehinai lazni</p>
+    <p><span class="tertaha">lo do pinji</span> zohu: carmi .inaje cando .i .ehu na pacna</p>
+    <p><span class="tertaha">lo broda brode</span> zohu: brodi .iju brodo .i pei brodu</p>
+  </div>
+</div>
+
+<div><input type="button" value=".ai cuxna prina" id="cuxna"></div>
+<div id="tercuha">
+  <textarea id="mofunca">
+    zanfunca,100
+    mutce zanfuha,20
+    malfunca,80
+    mutce malfuha,10
+    malmalfuha,5
+  </textarea>
+  <textarea id="tertaha">
+    lo se djica,1000
+    lo jdini,500
+    lo do pinji,5
+  </textarea>
+</div>
+
+<script>
+window.addEventListener("load",function(){
+  document.getElementById("cuxna").addEventListener("click",function(){
+    cuxyciha(["mofunca","tertaha"]);
+  },false);
+},false);
+function cuxyciha(id_zei_porsi){
+  for (var i of id_zei_porsi){
+    var tercuxsro = tercuxsro_poicpa(i);
+    for (var j of document.querySelectorAll("."+i)){
+      var sleselcuha = slecuha(tercuxsro);
+      j.textContent = sleselcuha.jufspi;
+      tercuxsro.splice(sleselcuha.moisni,1);
+    }
+  }
+}
+function tercuxsro_poicpa(id){
+  return document.getElementById(id).textContent.split("\n");
+}
+function slecuha(tercuxsro/*textarea+slice*/){ //va'i za'e cmakuji zo'o
+  var tercuxste = [];
+  var cuho = [];
+  for (var i of tercuxsro) {
+    var terkaha = i.trim().split(",");
+    if(terkaha.length==2){
+      tercuxste.push(terkaha[0]);
+      cuho.push(terkaha[1]-0);
+    }
+  }
+  console.log(tercuxste,cuho,sumji(cuho),sihesivahe(cuho));
+  var selcuxnahu = Math.floor(Math.random()*sumji(cuho));
+  var vahe = sihesivahe(cuho);
+  var selcuxmoisni = -1;
+  for (var i=0;i<vahe.length;i++){
+    if(selcuxnahu<vahe[i]&&selcuxmoisni<0){selcuxmoisni=i;}
+  }
+  console.log(selcuxnahu,";",selcuxmoisni);
+  console.log(tercuxste[selcuxmoisni]);
+  return {jufspi:tercuxste[selcuxmoisni], moisni:selcuxmoisni};
+}
+function sumji(nampoi){
+  var jalge = 0;
+  for (var i of nampoi){
+    jalge += i;
+  }
+  return jalge;
+}
+function sihesivahe(nampoi){
+  var ninpoi = [];
+  var zasnahu = 0;
+  for (var i of nampoi){
+    zasnahu += i;
+    ninpoi.push(zasnahu);
+  }
+  return ninpoi;
+}
+</script>
