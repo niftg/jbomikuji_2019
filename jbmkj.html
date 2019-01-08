@@ -38,8 +38,9 @@
 #cmene{top:-48px;}
 #detri{top:-42px;}
 body {
-  font-size:xx-large;
+  font-size: xx-large;
 }
+label{font-size: small;}
 .vl p {margin:0px;}
 .torveki {
   margin:0px auto;
@@ -69,7 +70,7 @@ body {
     <p class="v" id="detri">dehi li renopaso</p>
   </div>
   <div class="mofunca vl">maltcefuha</div>
-  <div class="v vl torveki">
+  <div class="v vl torveki" id="torveki_ralju">
     <p><span class="tertaha">lo se djica</span> zohu: <span class="brivla">lakne</span> .i<span class="mahoija">je</span> <span class="brivla">jibni</span> <span class="zahumai">.i .ehinai lazni</span></p>
     <p><span class="tertaha">lo do pinji</span> zohu: <span class="brivla">carmi</span> .i<span class="mahoija">naje</span> <span class="brivla">cando</span> <span class="zahumai">.i .ehu na pacna</span></p>
     <p><span class="tertaha">lo broda brode</span> zohu: <span class="brivla">brodi</span> .i<span class="mahoija">ju</span> <span class="brivla">brodo</span> <span class="zahumai">.i pei brodu</span></p>
@@ -113,12 +114,16 @@ body {
     .i pei brodu,100
   </textarea>
 </div>
+<div><input type="checkbox" id="gafpuhi_bredi"><label for="gafpuhi_bredi">ba gafpu'i</label><input id="gafpuhi_jufspi"><div>
 
 <script>
 window.addEventListener("load",function(){
   document.getElementById("cuxna").addEventListener("click",function(){
     cuxyciha(["mofunca","tertaha","brivla","mahoija","zahumai"]);
   },false);
+  document.getElementById("gafpuhi_bredi").addEventListener("click",function(){
+    if(!window.bahobregau){cenba_bregau();window.bahobregau=true;}
+  },false)
 },false);
 function cuxyciha(id_zei_porsi){
   for (var i of id_zei_porsi){
@@ -169,5 +174,15 @@ function sihesivahe(nampoi){
     ninpoi.push(zasnahu);
   }
   return ninpoi;
+}
+function cenba_bregau(){
+  var gaubredi = Array.from(document.querySelectorAll(".mofunca")).concat(Array.from(document.querySelectorAll(".torveki p span")));
+  for (var i of gaubredi){
+    i.addEventListener("click",function(){
+      if(document.getElementById("gafpuhi_bredi").checked){
+        this.textContent = document.getElementById("gafpuhi_jufspi").value;
+      }
+    },false);
+  }
 }
 </script>
